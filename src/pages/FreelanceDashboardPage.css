@@ -1,0 +1,367 @@
+/* FreelanceDashboardPage.css */
+.freelance-dashboard-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.freelance-dashboard-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 80px; /* Match the sidebar width */
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Header */
+.freelance-dashboard-header {
+  margin-bottom: 30px;
+}
+
+.freelance-dashboard-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 5px;
+}
+
+.freelance-user-role {
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Stats Grid */
+.freelance-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.freelance-stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.freelance-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.freelance-earnings-card {
+  border-left-color: #10b981;
+  background: linear-gradient(135deg, #f0fdf4, #ffffff);
+}
+
+.freelance-bookings-card {
+  border-left-color: #3b82f6;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.freelance-requests-card {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb, #ffffff);
+}
+
+.freelance-stat-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+/* Earnings Card */
+.freelance-stat-header {
+  margin-bottom: 20px;
+}
+
+.freelance-stat-main {
+  display: flex;
+  align-items: center;
+}
+
+.freelance-stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #10b981;
+}
+
+/* Bookings Card */
+.freelance-booking-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.freelance-booking-details span {
+  font-size: 1rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Requests Card */
+.freelance-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.freelance-request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.freelance-request-item:last-child {
+  border-bottom: none;
+}
+
+.freelance-request-item p {
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 500;
+  flex: 1;
+  margin-right: 15px;
+}
+
+.freelance-view-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.freelance-view-btn:hover {
+  background: #2563eb;
+}
+
+/* Content Grid */
+.freelance-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.freelance-content-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid;
+  transition: transform 0.3s ease;
+}
+
+.freelance-content-card:hover {
+  transform: translateY(-3px);
+}
+
+.freelance-reviews-card {
+  border-left-color: #8b5cf6;
+  background: linear-gradient(135deg, #faf5ff, #ffffff);
+}
+
+.freelance-schedule-card {
+  border-left-color: #ef4444;
+  background: linear-gradient(135deg, #fef2f2, #ffffff);
+}
+
+.freelance-activity-card {
+  border-left-color: #06b6d4;
+  background: linear-gradient(135deg, #f0fdff, #ffffff);
+}
+
+.freelance-summary-card {
+  border-left-color: #f59e0b;
+  background: linear-gradient(135deg, #fffbeb, #ffffff);
+}
+
+.freelance-content-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  border-bottom: 2px solid;
+  padding-bottom: 10px;
+}
+
+.freelance-reviews-card h3 { border-bottom-color: #8b5cf6; }
+.freelance-schedule-card h3 { border-bottom-color: #ef4444; }
+.freelance-activity-card h3 { border-bottom-color: #06b6d4; }
+.freelance-summary-card h3 { border-bottom-color: #f59e0b; }
+
+/* Reviews */
+.freelance-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.freelance-review-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 3px solid #8b5cf6;
+}
+
+.freelance-stars {
+  font-size: 1.1rem;
+}
+
+.freelance-review-item p {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Schedule */
+.freelance-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.freelance-schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 3px solid #ef4444;
+}
+
+.freelance-time {
+  font-weight: 700;
+  color: #1e293b;
+  min-width: 80px;
+}
+
+.freelance-event {
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Activity */
+.freelance-activity-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.freelance-activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 3px solid #06b6d4;
+}
+
+.freelance-label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.freelance-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #06b6d4;
+}
+
+/* Bookings Summary Chart */
+.freelance-chart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.freelance-chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 15px;
+  height: 120px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.freelance-bar {
+  flex: 1;
+  background: linear-gradient(to top, #f59e0b, #fbbf24);
+  border-radius: 5px 5px 0 0;
+  min-height: 20px;
+  transition: height 0.3s ease;
+}
+
+.freelance-chart-labels {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.freelance-chart-labels span {
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .freelance-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .freelance-content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .freelance-dashboard-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .freelance-stat-main {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .freelance-request-item {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .freelance-schedule-item {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .freelance-chart-bars {
+    gap: 8px;
+    padding: 0 10px;
+  }
+  
+  .freelance-chart-labels span {
+    font-size: 0.8rem;
+  }
+}

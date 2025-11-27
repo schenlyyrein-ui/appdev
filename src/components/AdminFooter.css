@@ -1,0 +1,82 @@
+/* AdminFooter.css */
+html, body {
+  height: 100%;  /* Ensure the body takes up full height */
+  margin: 0;     /* Remove default margin */
+}
+
+.admin-footer {
+  background: #2d8697;  /* Official teal color */
+  height: 80px;          /* Footer height */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.admin-footer-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-footer-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 50px;  /* Moves the left text to the right */
+  color: white;       /* Text color set to white */
+}
+
+.admin-footer-left span {
+  font-size: 1rem;      /* Text size for "© Schedify" */
+  font-weight: 500;
+  align-self: center;   /* Ensures the text is vertically centered */
+}
+
+.admin-footer-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;  /* Vertically centers the icons */
+  margin-right: 50px;    /* Moves the icons to the left */
+}
+
+.footer-icons {
+  display: flex;
+  gap: 30px;           /* Adjust the gap between the icons */
+  align-items: center; /* Ensures icons align properly */
+}
+
+.footer-icon {
+  font-size: 25px;      /* Icon size */
+  color: white;         /* White color for icons */
+  height: 100%;         /* Ensures the icons are the same height as the footer */
+  align-self: center;   /* Vertically center the icons */
+}
+
+.footer-icon:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .admin-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-footer-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .admin-footer-right {
+    align-self: flex-end;
+    gap: 10px;
+  }
+}
