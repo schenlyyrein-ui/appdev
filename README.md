@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+🚀 Full-Stack User Profile Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A robust, database-driven application for managing user accounts, built with React, Node.js, Express, and MySQL. This project demonstrates full CRUD capabilities, secure authentication, and role-based access control.
 
-## Available Scripts
+📅 Sprint 2 Accomplishments (Current Release)
 
-In the project directory, you can run:
+We successfully transformed the static prototype into a fully functional dynamic application. Key milestones include:
 
-### `npm start`
+Full-Stack Integration: Connected the React Frontend (Port 3000) to the Express Backend (Port 4000) using a Proxy configuration to resolve CORS/404 errors.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Database Persistence: Migrated from mock data to a live MySQL database. All user data persists across sessions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Secure Authentication:
 
-### `npm test`
+Refactored the system to use Email-Only Authentication (dropped the legacy username column).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Implemented JWT (JSON Web Token) security.
 
-### `npm run build`
+Secured API routes using authMiddleware and adminOnly middleware (RBAC).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CRUD Operations:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create: "Add User" modal connected to /api/auth/signup.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Read: Dynamic User Table fetching data from /api/admin/users.
 
-### `npm run eject`
+Update: "Edit User" modal connected to /api/admin/users/:id/profile.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Delete: Implemented Soft Delete (sets status to 'Offline' instead of erasing data).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Advanced UI: Added a Filter Modal form to sort users by Role and Status on the client side.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🛠️ Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Frontend: React.js, React Bootstrap, Axios
 
-## Learn More
+Backend: Node.js, Express.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Database: MySQL
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Security: JSON Web Tokens (JWT), Bcrypt (Password Hashing)
 
-### Code Splitting
+Testing: Postman
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🔌 API Endpoints
 
-### Analyzing the Bundle Size
+Authentication (/api/auth)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Method
 
-### Making a Progressive Web App
+Endpoint
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Description
 
-### Advanced Configuration
+POST
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+/signup
 
-### Deployment
+Registers a new user (Hashes password, checks duplicate email).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+POST
 
-### `npm run build` fails to minify
+/login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Authenticates user via Email & Password; returns JWT Token.
+
+Admin Management (/api/admin)
+
+Requires Authorization: Bearer <token> header
+
+Method
+
+Endpoint
+
+Description
+
+GET
+
+/users
+
+READ: Fetches all user profiles from the database.
+
+PATCH
+
+/users/:id/profile
+
+UPDATE: Updates Name, Email, and Role. Checks for conflicts.
+
+DELETE
+
+/users/:id
+
+DELETE: Performs a "Soft Delete" (sets is_active to 0).
+
+⚙️ Installation & Setup
+
+1. Database Setup
+
+Open phpMyAdmin.
+
+Create a database named freelance_app_new.
+
+Import the provided SQL schema or run the migration script.
+
+Important: Ensure the users table does NOT have a username column (Email-only auth).
+
+2. Backend Setup
+
+cd backend
+npm install
+# Create a .env file with DB credentials and JWT_SECRET
+npm start
+# Server runs on Port 4000
+
+
+3. Frontend Setup
+
+cd frontend
+# Ensure package.json includes: "proxy": "http://localhost:4000"
+npm install
+npm start
+# App runs on http://localhost:3000
+
+
+🧪 Testing
+
+The API has been verified using Postman.
+
+Auth: Verified Token generation on Login.
+
+Security: Verified 401 Unauthorized when accessing Admin routes without a token.
+
+Validation: Verified 409 Conflict when creating users with duplicate emails.
+
+👥 Contributors
+
+[Your Name/Group Name] - Full Stack Development
