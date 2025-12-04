@@ -1,0 +1,445 @@
+/* FreelanceNotifications.css */
+.freelance-notifications {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.freelance-notifications-layout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+.freelance-notifications-main-content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 80px;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.freelance-notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.freelance-header-left {
+  flex: 1;
+}
+
+.freelance-notifications-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.freelance-notifications-title i {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.2rem;
+}
+
+.freelance-notifications-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.freelance-header-right {
+  text-align: right;
+}
+
+.freelance-unread-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #fd746c, #ff9068);
+  color: white;
+  border-radius: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(253, 116, 108, 0.3);
+}
+
+.freelance-badge-count {
+  background: white;
+  color: #fd746c;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.freelance-notifications-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.freelance-filter-tabs {
+  display: flex;
+  background: white;
+  border-radius: 15px;
+  padding: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e9ecef;
+}
+
+.freelance-filter-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.freelance-filter-tab.freelance-active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.freelance-filter-tab:hover:not(.freelance-active) {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+}
+
+.freelance-tab-badge {
+  background: #fd746c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.freelance-btn-mark-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.freelance-btn-mark-all:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+}
+
+.freelance-btn-mark-all:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.freelance-notifications-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.freelance-notifications-section {
+  margin-bottom: 40px;
+}
+
+.freelance-section-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.freelance-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.freelance-section-title i {
+  color: #667eea;
+}
+
+.freelance-section-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, transparent);
+  border-radius: 2px;
+}
+
+.freelance-notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.freelance-notification-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.freelance-notification-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.freelance-notification-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.freelance-notification-card:hover::before {
+  opacity: 1;
+}
+
+.freelance-notification-card.freelance-unread {
+  border-left-color: #667eea;
+  background: linear-gradient(135deg, #ffffff, #f8f9ff);
+}
+
+.freelance-notification-card.freelance-read {
+  border-left-color: #e9ecef;
+  opacity: 0.8;
+}
+
+.freelance-notification-card.freelance-primary { border-left-color: #667eea; }
+.freelance-notification-card.freelance-success { border-left-color: #4ecdc4; }
+.freelance-notification-card.freelance-warning { border-left-color: #f093fb; }
+.freelance-notification-card.freelance-danger { border-left-color: #fd746c; }
+.freelance-notification-card.freelance-info { border-left-color: #764ba2; }
+
+.freelance-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.freelance-notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.freelance-notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.freelance-notification-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.freelance-unread-dot {
+  width: 10px;
+  height: 10px;
+  background: #667eea;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: freelance-pulse 2s infinite;
+}
+
+@keyframes freelance-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.freelance-notification-message {
+  color: #6c757d;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.freelance-notification-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.freelance-notification-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9aa0a6;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.freelance-notification-time i {
+  font-size: 0.8rem;
+}
+
+.freelance-btn-mark-read {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.freelance-btn-mark-read:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.freelance-empty-notifications {
+  text-align: center;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.freelance-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.freelance-empty-notifications h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.freelance-empty-notifications p {
+  color: #6c757d;
+  font-size: 1rem;
+  max-width: 300px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .freelance-notifications-main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+ 
+  .freelance-notifications-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+ 
+  .freelance-notifications-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+ 
+  .freelance-filter-tabs {
+    order: 2;
+  }
+ 
+  .freelance-btn-mark-all {
+    order: 1;
+    align-self: flex-end;
+  }
+ 
+  .freelance-notification-card {
+    padding: 20px;
+  }
+ 
+  .freelance-notification-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .freelance-notifications-main-content {
+    padding: 15px;
+  }
+ 
+  .freelance-notifications-title {
+    font-size: 2rem;
+  }
+ 
+  .freelance-filter-tabs {
+    flex-direction: column;
+  }
+ 
+  .freelance-notification-card {
+    flex-direction: column;
+    text-align: center;
+  }
+ 
+  .freelance-notification-header {
+    justify-content: center;
+    gap: 10px;
+  }
+ 
+  .freelance-notification-footer {
+    align-items: center;
+  }
+}

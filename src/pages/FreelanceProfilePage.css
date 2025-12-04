@@ -1,0 +1,443 @@
+/* FreelanceProfilePage.css */
+.freelance-profile-page {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 50%, #f0fdf4 100%);
+}
+
+.freelance-profile-content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 80px;
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* Profile Header */
+.freelance-profile-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.freelance-profile-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+
+.freelance-profile-main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.freelance-profile-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.freelance-profile-avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.freelance-avatar-initials {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+}
+
+.freelance-profile-basic-info h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.freelance-profile-role {
+  font-size: 1.3rem;
+  color: #ffeb3b;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.freelance-profile-age {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.freelance-profile-tagline {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.freelance-edit-profile-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ffa726);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.freelance-edit-profile-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+/* Profile Grid */
+.freelance-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.freelance-left-column,
+.freelance-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Profile Sections */
+.freelance-profile-section {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.freelance-profile-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  border-bottom: 3px solid;
+  padding-bottom: 8px;
+}
+
+/* Different border colors for each section */
+.freelance-left-column .freelance-profile-section:nth-child(1) h2 { border-bottom-color: #ff6b6b; } /* About */
+.freelance-left-column .freelance-profile-section:nth-child(2) h2 { border-bottom-color: #4ecdc4; } /* Skills */
+.freelance-left-column .freelance-profile-section:nth-child(3) h2 { border-bottom-color: #45b7d1; } /* Portfolio */
+
+.freelance-right-column .freelance-profile-section:nth-child(1) h2 { border-bottom-color: #96ceb4; } /* Services */
+.freelance-right-column .freelance-profile-section:nth-child(2) h2 { border-bottom-color: #feca57; } /* Availability */
+
+.freelance-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.freelance-section-header h2 {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.freelance-add-btn {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+}
+
+.freelance-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(78, 205, 196, 0.6);
+}
+
+/* About Section */
+.freelance-about-content p {
+  color: #475569;
+  line-height: 1.7;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Skills Section */
+.freelance-skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.freelance-skill-tag {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(116, 185, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.freelance-skill-tag:hover {
+  transform: translateY(-2px);
+}
+
+/* Portfolio Section */
+.freelance-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.freelance-empty-portfolio {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-style: italic;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+}
+
+.freelance-portfolio-item {
+  text-align: center;
+}
+
+.freelance-portfolio-placeholder {
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+}
+
+.freelance-portfolio-placeholder:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+}
+
+.freelance-portfolio-placeholder span {
+  font-size: 2rem;
+  color: white;
+  font-weight: 300;
+}
+
+.freelance-portfolio-item p {
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Services Section */
+.freelance-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.freelance-service-item {
+  background: linear-gradient(135deg, #ffeaa7, #fd79a8);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #e17055;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(253, 121, 168, 0.3);
+}
+
+.freelance-service-item:hover {
+  transform: translateX(5px) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 121, 168, 0.5);
+}
+
+.freelance-service-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.freelance-service-info h4 {
+  color: #2d3436;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.freelance-service-price {
+  color: #00b894;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 184, 148, 0.3);
+}
+
+/* Calendar Section */
+.freelance-calendar-container {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.freelance-calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white;
+}
+
+.freelance-calendar-day-header {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.freelance-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #e2e8f0;
+  border: 1px solid #e2e8f0;
+}
+
+.freelance-calendar-day {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  padding: 15px 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #2d3436;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.freelance-calendar-day:hover:not(.freelance-empty) {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+  transform: scale(1.05);
+}
+
+.freelance-calendar-day.freelance-available {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.4);
+}
+
+.freelance-calendar-day.freelance-empty {
+  background: #f8fafc;
+  cursor: default;
+  color: transparent;
+}
+
+.freelance-calendar-legend {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+  border-radius: 12px;
+}
+
+.freelance-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.freelance-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: white;
+  border: 2px solid #e2e8f0;
+}
+
+.freelance-legend-color.freelance-available {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  border-color: #00b894;
+}
+
+.freelance-legend-item span {
+  font-size: 0.9rem;
+  color: #2d3436;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .freelance-profile-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .freelance-profile-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .freelance-profile-avatar-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .freelance-calendar-day {
+    padding: 10px 2px;
+    min-height: 50px;
+    font-size: 0.9rem;
+  }
+  
+  .freelance-profile-header {
+    padding: 20px;
+  }
+  
+  .freelance-skills-grid {
+    justify-content: center;
+  }
+}

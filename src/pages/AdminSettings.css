@@ -1,0 +1,548 @@
+/* AdminSettings.css - Consistent with AdminPage.css styling */
+.admin-settings-page {
+  background: #f8fafc;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main Content */
+.admin-settings-page .admin-main {
+  padding: 20px;
+  background: #f8fafc;
+}
+
+.admin-settings-page .admin-header-row {
+  margin-bottom: 20px;
+}
+
+.admin-settings-page .admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Changed from center to flex-start */
+  padding: 12px 0;
+}
+
+.admin-settings-page .admin-section-title {
+  color: #2d3748;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.admin-settings-page .admin-section-subtitle {
+  color: #718096;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.admin-settings-page .admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -10px; /* Added to move icons higher */
+}
+
+/* Header Icons - EXACT match from AdminPage.css */
+.admin-settings-page .admin-action-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.admin-settings-page .admin-action-btn:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.admin-settings-page .notification-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: #e53e3e;
+  border-radius: 50%;
+}
+
+/* User Avatar - Circular like other pages */
+.admin-settings-page .admin-user-avatar {
+  width: 36px;
+  height: 36px;
+  background: #1d8aa5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8;
+  cursor: pointer;
+  line-height: 1;
+  position: relative;
+}
+
+/* Quick Actions */
+.admin-settings-page .quick-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center; /* Ensure quick actions align properly */
+}
+
+.admin-settings-page .quick-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.admin-settings-page .quick-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Recent Activity Compact */
+.admin-settings-page .recent-activity-compact {
+  position: relative;
+}
+
+.admin-settings-page .activity-toggle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4a5568;
+  transition: all 0.3s ease;
+}
+
+.admin-settings-page .activity-toggle:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
+.admin-settings-page .activity-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e53e3e;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.admin-settings-page .activity-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 280px;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.admin-settings-page .recent-activity-compact:hover .activity-dropdown {
+  display: block;
+}
+
+.admin-settings-page .activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.admin-settings-page .activity-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.admin-settings-page .activity-item-compact {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f7fafc;
+  transition: background 0.3s ease;
+}
+
+.admin-settings-page .activity-item-compact:hover {
+  background: #f7fafc;
+}
+
+.admin-settings-page .activity-item-compact:last-child {
+  border-bottom: none;
+}
+
+.admin-settings-page .activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.admin-settings-page .activity-dot-success {
+  background: #38a169;
+}
+
+.admin-settings-page .activity-dot-info {
+  background: #3182ce;
+}
+
+.admin-settings-page .activity-content-compact {
+  flex: 1;
+}
+
+.admin-settings-page .activity-text {
+  display: block;
+  font-size: 0.85rem;
+  color: #2d3748;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.admin-settings-page .activity-time {
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+/* Settings Alert */
+.admin-settings-page .settings-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.admin-settings-page .settings-alert i {
+  font-size: 1.1rem;
+}
+
+/* Settings Tabs - Match card styling from AdminPage.css */
+.admin-settings-page .settings-tabs-row {
+  margin-bottom: 0;
+}
+
+.admin-settings-page .settings-tabs-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.admin-settings-page .tabs-card-body {
+  padding: 0;
+}
+
+.admin-settings-page .settings-tabs {
+  padding: 0;
+}
+
+.admin-settings-page .settings-tabs .nav-tabs {
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 0;
+  padding: 0 20px;
+  background: white;
+}
+
+.admin-settings-page .settings-tabs .nav-link {
+  border: none;
+  background: transparent;
+  color: #718096;
+  font-weight: 500;
+  padding: 16px 20px;
+  margin-bottom: -2px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.admin-settings-page .settings-tabs .nav-link:hover {
+  color: #1d8aa5;
+  border-bottom-color: #e2e8f0;
+}
+
+.admin-settings-page .settings-tabs .nav-link.active {
+  color: #1d8aa5;
+  border-bottom-color: #1d8aa5;
+  background: transparent;
+}
+
+.admin-settings-page .settings-tabs .tab-content {
+  margin-bottom: 0;
+  padding: 24px;
+  min-height: 400px;
+  background: white;
+}
+
+/* Tab Header - Fixed left spacing */
+.admin-settings-page .tab-header {
+  margin-bottom: 24px;
+  padding: 0;
+}
+
+.admin-settings-page .tab-title {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.admin-settings-page .tab-description {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Settings Form - Fixed spacing and alignment */
+.admin-settings-page .settings-form {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-settings-page .setting-group {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.admin-settings-page .form-label-custom {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  display: block;
+}
+
+.admin-settings-page .form-control-custom {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  height: auto;
+  width: 100%;
+}
+
+.admin-settings-page .form-control-custom:focus {
+  border-color: #1d8aa5;
+  box-shadow: 0 0 0 0.2rem rgba(29, 138, 165, 0.1);
+}
+
+/* Switch Groups - Better spacing */
+.admin-settings-page .switch-group {
+  padding: 12px 0;
+  margin-bottom: 0;
+}
+
+.admin-settings-page .custom-switch {
+  padding-left: 2.5em;
+  min-height: auto;
+  margin-bottom: 4px;
+}
+
+.admin-settings-page .custom-switch .form-check-input {
+  width: 2.5em;
+  height: 1.25em;
+  margin-left: -2.5em;
+  margin-top: 0.15em;
+}
+
+.admin-settings-page .custom-switch .form-check-input:checked {
+  background-color: #1d8aa5;
+  border-color: #1d8aa5;
+}
+
+.admin-settings-page .switch-label {
+  font-weight: 500;
+  color: #2d3748;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.admin-settings-page .switch-description {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+  color: #718096;
+}
+
+/* Security Features */
+.admin-settings-page .security-feature {
+  padding: 12px 0;
+}
+
+/* Action Buttons - Match AdminPage.css button styling */
+.admin-settings-page .settings-actions {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #f7fafc;
+  flex-wrap: wrap;
+}
+
+.admin-settings-page .settings-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.admin-settings-page .settings-actions .btn-primary {
+  background: #1d8aa5;
+  border-color: #1d8aa5;
+}
+
+.admin-settings-page .settings-actions .btn-primary:hover {
+  background: #15657a;
+  border-color: #15657a;
+  transform: translateY(-1px);
+}
+
+.admin-settings-page .settings-actions .btn-outline-secondary:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+.admin-settings-page .settings-actions .btn-outline-info:hover {
+  background: #bee3f8;
+  border-color: #3182ce;
+  transform: translateY(-1px);
+}
+
+.admin-settings-page .settings-actions .btn-outline-success:hover {
+  background: #c6f6d5;
+  border-color: #38a169;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design - Match AdminPage.css breakpoints */
+@media (max-width: 767px) {
+  .admin-settings-page .admin-main {
+    padding: 12px;
+  }
+
+  .admin-settings-page .admin-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .admin-settings-page .admin-header-actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0; /* Reset margin on mobile */
+  }
+
+  .admin-settings-page .settings-tabs .nav-tabs {
+    padding: 0 16px;
+  }
+
+  .admin-settings-page .settings-tabs .nav-link {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+
+  .admin-settings-page .settings-tabs .tab-content {
+    padding: 20px 16px;
+  }
+
+  .admin-settings-page .settings-actions {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .admin-settings-page .settings-actions .btn {
+    justify-content: center;
+  }
+
+  .admin-settings-page .tab-header {
+    margin-bottom: 20px;
+  }
+
+  .admin-settings-page .quick-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .admin-settings-page .quick-action-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-settings-page .admin-main {
+    padding: 8px;
+  }
+
+  .admin-settings-page .settings-tabs .nav-link {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .admin-settings-page .tab-title {
+    font-size: 1.1rem;
+  }
+
+  .admin-settings-page .settings-tabs .tab-content {
+    padding: 16px 12px;
+  }
+}
+
+/* Form Text Styling */
+.admin-settings-page .form-text {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: #718096;
+}
+
+/* Badge Styling - Match AdminPage.css */
+.admin-settings-page .badge {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  font-weight: 600;
+}

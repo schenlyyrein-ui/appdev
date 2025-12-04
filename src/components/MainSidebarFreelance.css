@@ -1,0 +1,112 @@
+.freelance-sidebar {
+  background: #1d8aa5;
+  color: #ffffff;
+  min-height: calc(100vh - 56px);
+  padding: 18px 12px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.freelance-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.freelance-avatar-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #0f667b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.freelance-avatar-initials {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.freelance-avatar-text {
+  line-height: 1.1;
+}
+
+.freelance-avatar-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.freelance-avatar-role {
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.freelance-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.freelance-menu-item {
+  width: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.freelance-menu-item.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1d8aa5;
+  font-weight: 700;
+}
+
+.freelance-menu-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Logout Section */
+.freelance-logout-section {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.freelance-logout-btn {
+  width: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.freelance-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .freelance-sidebar {
+    display: none;
+  }
+}

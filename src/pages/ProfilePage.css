@@ -1,0 +1,321 @@
+/* ProfilePage.css */
+.prfle-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 1rem;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.prfle-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.prfle-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.prfle-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.prfle-header h1 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prfle-header p {
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+.prfle-form-section {
+  margin-bottom: 1.5rem;
+}
+
+.prfle-form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prfle-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.prfle-form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.prfle-form-group input {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.prfle-form-group input:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background-color: white;
+}
+
+.prfle-form-group input:hover {
+  border-color: #cbd5e0;
+}
+
+.prfle-section-divider {
+  position: relative;
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.prfle-section-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e2e8f0;
+}
+
+.prfle-section-divider span {
+  display: inline-block;
+  background-color: white;
+  padding: 0 1rem;
+  color: #667eea;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.prfle-verification-section h2 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.prfle-verification-description {
+  margin-bottom: 1.5rem;
+  color: #718096;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.prfle-file-upload-area {
+  border: 2px dashed #cbd5e0;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+}
+
+.prfle-file-upload-area:hover {
+  border-color: #667eea;
+  background-color: #f0f4f8;
+}
+
+.prfle-file-upload-area.prfle-dragging {
+  border-color: #667eea;
+  background-color: #edf2f7;
+  transform: scale(1.01);
+}
+
+.prfle-upload-icon {
+  color: #a0aec0;
+  margin-bottom: 1rem;
+}
+
+.prfle-upload-text {
+  margin-bottom: 1rem;
+}
+
+.prfle-upload-text p {
+  margin-bottom: 1rem;
+  color: #4a5568;
+  font-size: 1.05rem;
+}
+
+.prfle-upload-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+}
+
+.prfle-upload-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+.prfle-file-types {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.prfle-file-preview {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.prfle-file-info {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.prfle-file-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.prfle-file-details {
+  flex: 1;
+  text-align: left;
+}
+
+.prfle-file-name {
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.prfle-file-size {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+.prfle-remove-file {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #a0aec0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.prfle-remove-file:hover {
+  background-color: #fed7d7;
+  color: #e53e3e;
+}
+
+.prfle-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+  margin-top: 1rem;
+}
+
+.prfle-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+}
+
+.prfle-submit-btn:active {
+  transform: translateY(0);
+}
+
+.prfle-disclaimer {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background-color: #edf2f7;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.prfle-disclaimer-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.prfle-disclaimer p {
+  margin: 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .prfle-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .prfle-form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .prfle-file-upload-area {
+    padding: 1.5rem 1rem;
+  }
+  
+  .prfle-header h1 {
+    font-size: 1.8rem;
+  }
+}

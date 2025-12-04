@@ -1,0 +1,101 @@
+/* Full-page layout for admin login */
+.admin-login-page {
+  flex: 1; /* works nicely with your global layout */
+  min-height: 0; /* prevent forced extra height */
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  padding: 24px 16px;
+  background: #f5f5f5;
+}
+
+/* Container sizing */
+.admin-login-container {
+  max-width: 480px;
+  width: 100%;
+}
+
+/* Card styling */
+.admin-login-card {
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+
+.admin-login-card-body {
+  padding: 28px 24px !important;
+}
+
+/* Tabs (LOG IN / SIGN UP) – reuse same look as freelancer login */
+.auth-tabs .nav-link {
+  border-radius: 999px !important;
+  margin: 0 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #777777;
+}
+
+.auth-tabs .nav-link.active {
+  background-color: #268aa5 !important;
+  color: #ffffff !important;
+}
+
+/* Rounded input groups */
+.input-pill {
+  border-radius: 999px !important;
+  border: none !important;
+}
+
+.input-pill .form-control {
+  font-size: 0.95rem;
+}
+
+/* Forgot password link */
+.forgot-link {
+  font-size: 0.9rem;
+  color: #268aa5;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Primary login / signup buttons */
+.login-btn,
+.signup-btn {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Social buttons row */
+.social-row,
+.signup-social-row {
+  font-size: 0.9rem;
+}
+
+.social-btn {
+  font-size: 0.9rem;
+}
+
+/* Small gap text */
+.or-span {
+  font-size: 0.85rem;
+}
+
+/* Facebook icon color if you want it distinct */
+.fb-icon {
+  color: #1877f2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .admin-login-card-body {
+    padding: 20px 16px !important;
+  }
+
+  .auth-tabs .nav-link {
+    font-size: 0.85rem;
+  }
+}
