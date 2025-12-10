@@ -83,3 +83,59 @@ export const reactivateUser = async (req, res) => {
   }
 };
 
+/**
+ * PUT /api/admin/freelancer/:id/verify
+ * Body: { status } (status: 'approved' or 'rejected')
+ */
+export const verifyFreelancer = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!status || !['approved', 'rejected'].includes(status)) {
+      return res.status(400).json({ message: "Invalid status. Must be 'approved' or 'rejected'" });
+    }
+
+    // Update freelancer's status in the database
+    const query = "UPDATE freelancers SET status = ? WHERE id = ?";
+    const values = [status, id];
+
+    await pool.query(query, values);
+
+    return res.status(200).json({ message: `Freelancer ${status} successfully.` });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};
+
+// controllers/adminController.js
+export const approveFreelancer = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // 1. Update the freelancer's status to 'approved' in the freelancers table
+    await pool.query("UPDATE freelancers SET status = 'approved' WHERE id = ?", [id]);
+
+    // 2. Get the freelancer's data from the freelancers table
+    const [freelancerData] = await pool.query("SELECT * FROM freelancers WHERE id = ?", [id]);
+
+    if (freelancerData.length === 0) {
+      return res.status(404).json({ message: 'Freelancer not found' });
+    }
+
+    // 3. Insert the approved freelancer into the 'users' table
+    const { full_name, email, date_of_birth, location, contact_number, skills_services, resume_file_path } = freelancerData[0];
+
+    await pool.query(`
+      INSERT INTO users (fullname, email, date_of_birth, location, contact_number, skills_services, resume_file_path, role, is_active)
+      VALUES (?, ?, ?, ?, ?, ?, ?, 'freelancer', 1)
+    `, [full_name, email, date_of_birth, location, contact_number, skills_services, resume_file_path]);
+
+    return res.status(200).json({ message: 'Freelancer approved and moved to users table.' });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};

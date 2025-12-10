@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProfilePage.css';
+import axios from 'axios';
 
 const ProfilePage = () => {
   const [formData, setFormData] = useState({
@@ -55,11 +56,27 @@ const ProfilePage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Submit form data to your backend
-    navigate('/pending-approval');
+    const dataToSend = new FormData();
+    dataToSend.append('full_name', formData.fullName);
+    dataToSend.append('email', formData.email);
+    dataToSend.append('date_of_birth', formData.dateOfBirth);
+    dataToSend.append('location', formData.location);
+    dataToSend.append('contact_number', formData.contactNumber);
+    dataToSend.append('skills_services', formData.skills);
+    dataToSend.append('resume', formData.verificationFile); // Send the file
+
+    try {
+      const response = await axios.post('/api/auth/complete-profile', dataToSend, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+
+      // After successful profile completion, redirect to PendingPage
+      navigate('/pending-approval');
+    } catch (error) {
+      console.error("Error during profile submission:", error);
+    }
   };
 
   return (

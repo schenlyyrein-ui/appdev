@@ -6,6 +6,8 @@ import {
   updateUserProfile, // <--- Import the new function
   deactivateUser,
   reactivateUser,
+  approveFreelancer,
+  verifyFreelancer
 } from "../controllers/adminController.js";
 
 const router = Router();
@@ -23,5 +25,11 @@ router.delete("/users/:id", deactivateUser);
 
 // REACTIVATE user
 router.patch("/users/:id/reactivate", reactivateUser);
+
+// PUT /api/admin/freelancer/:id/verify
+router.put("/freelancer/:id/verify", verifyFreelancer);
+
+// PUT /api/admin/freelancer/:id/approve
+router.put("/freelancer/:id/approve", approveFreelancer);
 
 export default router;

@@ -57,38 +57,37 @@ const LoginPage = () => {
       setLoginLoading(false);
     }
   };
-
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    setSignupError("");
-
-    if (signupPassword !== signupConfirmPassword) {
-      setSignupError("Passwords do not match");
-      return;
-    }
-
-    setSignupLoading(true);
-
-    try {
-      const data = await signup({
-        fullname: signupFullname,
-        email: signupIdentifier,
-        password: signupPassword,
-      });
   
+  // In LogInPage.jsx for signup
+const handleSignup = async (e) => {
+  e.preventDefault();
+  setSignupError("");
 
-      // Save token + user
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+  if (signupPassword !== signupConfirmPassword) {
+    setSignupError("Passwords do not match");
+    return;
+  }
 
-      // After signup, go to profile (same as your old code)
-      navigate("/profile");
-    } catch (err) {
-      setSignupError(err.message);
-    } finally {
-      setSignupLoading(false);
-    }
-  };
+  setSignupLoading(true);
+
+  try {
+    const data = await signup({
+      fullname: signupFullname,
+      email: signupIdentifier,
+      password: signupPassword,
+      // Role is implicitly handled as "freelancer" based on the page
+    });
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    navigate("/profile"); // Redirect to profile page
+  } catch (err) {
+    setSignupError(err.message);
+  } finally {
+    setSignupLoading(false);
+  }
+};
 
   return (
     <>

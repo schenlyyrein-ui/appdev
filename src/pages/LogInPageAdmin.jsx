@@ -74,33 +74,33 @@ const LogInPageAdmin = () => {
   // In src/pages/LogInPageAdmin.jsx
 
 const handleSignup = async (e) => {
-    e.preventDefault();
-    setSignupError("");
+  e.preventDefault();
+  setSignupError("");
 
-    if (signupPassword !== signupConfirmPassword) {
-      setSignupError("Passwords do not match");
-      return;
-    }
+  if (signupPassword !== signupConfirmPassword) {
+    setSignupError("Passwords do not match");
+    return;
+  }
 
-    setSignupLoading(true);
+  setSignupLoading(true);
 
-    try {
-      const data = await signup({
-        fullname: signupFullname,
-        email: signupIdentifier, 
-        password: signupPassword,
-        role: "admin", 
-      });
+  try {
+    const data = await signup({
+      fullname: signupFullname,
+      email: signupIdentifier,
+      password: signupPassword,
+      role: "admin", // Automatically set role to admin
+    });
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      
-      navigate("/admin");
-    } catch (err) {
-      setSignupError(err.message);
-    } finally {
-      setSignupLoading(false);
-    }
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    navigate("/admin");
+  } catch (err) {
+    setSignupError(err.message);
+  } finally {
+    setSignupLoading(false);
+  }
 };
 
   return (
