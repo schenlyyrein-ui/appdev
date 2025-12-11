@@ -45,14 +45,26 @@ const LoginPage = () => {
         password: loginPassword,
       });
 
-      // Save token + user
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      // ----------------------------------------------------
+      // 1. NEW: Check if the backend says the user is pending
+      // ----------------------------------------------------
+      if (data.isPending) {
+        navigate("/pending-approval");
+        return; // Stop here so we don't try to save a token that doesn't exist
+      }
 
-      // After successful login, navigate to the Freelance Dashboard
-      navigate("/freelance-dashboard");
+      // 2. Normal Login Flow (User is active)
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        
+        // Navigate to dashboard
+        navigate("/freelance-dashboard");
+      }
+
     } catch (err) {
-      setLoginError(err.message);
+      // This handles 401 (Invalid creds) or 403 (Rejected) errors
+      setLoginError(err.message || "Login failed");
     } finally {
       setLoginLoading(false);
     }

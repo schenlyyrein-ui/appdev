@@ -24,44 +24,38 @@ const ProfilesAdmin = () => {
   const [showActionModal, setShowActionModal] = useState(false);
   const [editUserData, setEditUserData] = useState({});
 
-  useEffect(() => {
+useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // 1. Get the token from storage (Check if you named it 'token' or 'accessToken')
-        const token = localStorage.getItem("token"); 
-
-        if (!token) {
-          console.error("No token found. User is not logged in.");
-          // Optional: Redirect to login page here
-          return;
-        }
-
-        // 2. Send the token in the Headers
+        const token = localStorage.getItem('token'); 
         const response = await axios.get('/api/admin/users', {
-          headers: {
-            Authorization: `Bearer ${token}` // This matches standard JWT middleware
-          }
+            headers: {
+                Authorization: `Bearer ${token}` 
+            }
         });
-        
-        // Data Mapping (Same as before)
+
+        // -----------------------------------------------------------
+        // FIX: Map Database columns to Frontend properties
+        // -----------------------------------------------------------
         const formattedUsers = response.data.map(user => ({
-          id: user.user_id,
-          name: user.fullname,
-          email: user.email, // This relies on the 'username as email' fix in controller
-          role: user.role,
-          status: user.is_active === 1 ? 'Active' : 'Offline', 
-          joinDate: user.created_at 
+          id: user.user_id,                  // Map 'user_id' -> 'id'
+          name: user.fullname,               // Map 'fullname' -> 'name'
+          email: user.email,                 // Matches
+          role: user.role,                   // Matches
+          status: user.is_active === 1 ? 'Active' : 'Offline', // Map 1/0 -> 'Active'/'Offline'
+          joinDate: user.created_at          // Map 'created_at' -> 'joinDate'
         }));
-  
-        setUsers(formattedUsers);
+
+        setUsers(formattedUsers); 
         setLoading(false);
+
       } catch (error) {
-        console.error('Error fetching users:', error);
-        // If error is 401, it means the token is expired or invalid
-        if (error.response && error.response.status === 401) {
-             alert("Session expired. Please login again.");
-        }
+        console.error("Error fetching users:", error);
         setLoading(false);
+        if (error.response && error.response.status === 401) {
+            // Optional: Handle session expiry
+            console.log("Session expired");
+        }
       }
     };
 

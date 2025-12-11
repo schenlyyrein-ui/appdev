@@ -5,8 +5,6 @@ import {
   Row,
   Col,
   Card,
-  Tabs,
-  Tab,
   Form,
   Button,
   InputGroup,
@@ -15,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import "./LogInPageAdmin.css";
 import MainNavbar from "../components/MainNavbar";
 import AdminFooter from "../components/AdminFooter";
-import { login, signup } from "../api/auth"; // 👈 NEW: reuse same auth helpers
+import { login } from "../api/auth"; // 👈 'signup' import removed
 
 const LogInPageAdmin = () => {
   const navigate = useNavigate();
@@ -26,15 +24,7 @@ const LogInPageAdmin = () => {
   const [loginError, setLoginError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
 
-  // ---------- SIGNUP STATE ----------
-  const [signupFullname, setSignupFullname] = useState("");
-  const [signupIdentifier, setSignupIdentifier] = useState(""); // email/username field
-  const [signupPassword, setSignupPassword] = useState("");
-  const [signupConfirmPassword, setSignupConfirmPassword] = useState("");
-  const [signupError, setSignupError] = useState("");
-  const [signupLoading, setSignupLoading] = useState(false);
-
-  // ---------- HANDLERS ----------
+  // ---------- HANDLER ----------
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoginError("");
@@ -46,263 +36,131 @@ const LogInPageAdmin = () => {
         password: adminPassword,
       });
 
-      // Save token + user
+      // 1. Save token + user
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Basic admin check:
-      // - if backend later sends role, we respect role === 'admin'
-      // - otherwise we fall back to username check
-     const isAdminUser =
-  (data.user.role && data.user.role.toLowerCase() === "admin") ||
-  data.user.username?.toLowerCase() === "admin";
+      // 2. Security Check: Admin Role
+      const isAdminUser =
+        (data.user.role && data.user.role.toLowerCase() === "admin") ||
+        data.user.username?.toLowerCase() === "admin";
 
       if (!isAdminUser) {
         setLoginError("Unauthorized — this login page is for admins only.");
         return;
       }
 
-      // go to AdminPage after successful login
+      // 3. Navigate
       navigate("/admin");
     } catch (err) {
-      setLoginError(err.message);
+      setLoginError(err.message || "Login failed");
     } finally {
       setLoginLoading(false);
     }
   };
 
-  // In src/pages/LogInPageAdmin.jsx
-
-const handleSignup = async (e) => {
-  e.preventDefault();
-  setSignupError("");
-
-  if (signupPassword !== signupConfirmPassword) {
-    setSignupError("Passwords do not match");
-    return;
-  }
-
-  setSignupLoading(true);
-
-  try {
-    const data = await signup({
-      fullname: signupFullname,
-      email: signupIdentifier,
-      password: signupPassword,
-      role: "admin", // Automatically set role to admin
-    });
-
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user", JSON.stringify(data.user));
-
-    navigate("/admin");
-  } catch (err) {
-    setSignupError(err.message);
-  } finally {
-    setSignupLoading(false);
-  }
-};
-
   return (
     <>
       <MainNavbar />
-      {/* Main admin login area – centered card */}
+
       <div className="admin-login-page">
         <Container className="admin-login-container">
           <Row className="justify-content-center">
+            {/* Kept xs={12} so it maintains the full width (length) defined in CSS */}
             <Col xs={12}>
               <Card className="shadow-lg admin-login-card">
                 <Card.Body className="admin-login-card-body">
-                  <Tabs
-                    defaultActiveKey="login"
-                    id="admin-auth-tabs"
-                    className="mb-4 auth-tabs"
-                    justify
-                  >
-                    {/* LOG IN TAB */}
-                    <Tab eventKey="login" title="LOG IN">
-                      <Form onSubmit={handleLogin}>
-                        <InputGroup className="mb-3 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-regular fa-envelope text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="text"
-                            placeholder="Admin Email"
-                            className="border-0 bg-transparent"
-                            value={adminIdentifier}
-                            onChange={(e) =>
-                              setAdminIdentifier(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
+                  
+                  {/* Centered Login Header (Replaces the Tab) */}
+                  <div className="text-center mb-4">
+                    <h5 
+                      className="d-inline-block px-4 py-2" 
+                      style={{ 
+                        color: '#ffffff', 
+                        backgroundColor: '#268aa5', 
+                        borderRadius: '999px',
+                        fontWeight: '600',
+                        fontSize: '0.95rem',
+                        letterSpacing: '0.5px'
+                      }}
+                    >
+                      LOG IN
+                    </h5>
+                  </div>
 
-                        <InputGroup className="mb-2 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-solid fa-lock text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            className="border-0 bg-transparent"
-                            value={adminPassword}
-                            onChange={(e) =>
-                              setAdminPassword(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
+                  <Form onSubmit={handleLogin}>
+                    <InputGroup className="mb-3 rounded-pill bg-light input-pill">
+                      <InputGroup.Text className="bg-transparent border-0">
+                        <i className="fa-regular fa-envelope text-muted" />
+                      </InputGroup.Text>
+                      <Form.Control
+                        type="text"
+                        placeholder="Admin Email"
+                        className="border-0 bg-transparent"
+                        value={adminIdentifier}
+                        onChange={(e) => setAdminIdentifier(e.target.value)}
+                        required
+                      />
+                    </InputGroup>
 
-                        {loginError && (
-                          <div className="text-center mb-2">
-                            <span className="text-danger">{loginError}</span>
-                          </div>
-                        )}
+                    <InputGroup className="mb-2 rounded-pill bg-light input-pill">
+                      <InputGroup.Text className="bg-transparent border-0">
+                        <i className="fa-solid fa-lock text-muted" />
+                      </InputGroup.Text>
+                      <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        className="border-0 bg-transparent"
+                        value={adminPassword}
+                        onChange={(e) => setAdminPassword(e.target.value)}
+                        required
+                      />
+                    </InputGroup>
 
-                        <div className="text-center mb-3">
-                          <a href="#" className="forgot-link">
-                            Forgot password?
-                          </a>
-                        </div>
+                    {loginError && (
+                      <div className="text-center mb-2">
+                        <span className="text-danger">{loginError}</span>
+                      </div>
+                    )}
 
-                        <Button
-                          type="submit"
-                          variant="info"
-                          className="w-100 rounded-pill py-2 mb-3 login-btn"
-                          disabled={loginLoading}
-                        >
-                          {loginLoading ? "Logging in..." : "LOG IN"}
-                        </Button>
+                    <div className="text-center mb-3">
+                      <a href="#" className="forgot-link">
+                        Forgot password?
+                      </a>
+                    </div>
 
-                        <div className="d-flex align-items-center justify-content-between gap-2 flex-wrap social-row">
-                          <Button
-                            variant="outline-dark"
-                            className="flex-grow-1 rounded-pill d-flex align-items-center justify-content-center social-btn"
-                            type="button"
-                          >
-                            <i className="fa-brands fa-google me-2" />
-                            Log in with Google
-                          </Button>
+                    <Button
+                      type="submit"
+                      variant="info"
+                      className="w-100 rounded-pill py-2 mb-3 login-btn"
+                      disabled={loginLoading}
+                    >
+                      {loginLoading ? "Logging in..." : "LOG IN"}
+                    </Button>
 
-                          <span className="or-span text-muted">or</span>
+                    <div className="d-flex align-items-center justify-content-between gap-2 flex-wrap social-row">
+                      <Button
+                        variant="outline-dark"
+                        className="flex-grow-1 rounded-pill d-flex align-items-center justify-content-center social-btn"
+                        type="button"
+                      >
+                        <i className="fa-brands fa-google me-2" />
+                        Log in with Google
+                      </Button>
 
-                          <Button
-                            variant="outline-dark"
-                            className="flex-grow-1 rounded-pill d-flex align-items-center justify-content-center social-btn"
-                            type="button"
-                          >
-                            <i className="fa-brands fa-facebook-f me-2 fb-icon" />
-                            Log in with Facebook
-                          </Button>
-                        </div>
-                      </Form>
-                    </Tab>
+                      <span className="or-span text-muted">or</span>
 
-                    {/* SIGN UP TAB */}
-                    <Tab eventKey="signup" title="SIGN UP">
-                      <Form onSubmit={handleSignup} className="mt-4">
-                        {/* Full Name */}
-                        <InputGroup className="mb-3 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-solid fa-user text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="text"
-                            placeholder="Full Name"
-                            className="border-0 bg-transparent"
-                            value={signupFullname}
-                            onChange={(e) =>
-                              setSignupFullname(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
-
-                        {/* Email / Username */}
-                        <InputGroup className="mb-3 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-regular fa-envelope text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="text"
-                            placeholder="Email"
-                            className="border-0 bg-transparent"
-                            value={signupIdentifier}
-                            onChange={(e) =>
-                              setSignupIdentifier(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
-
-                        {/* Password */}
-                        <InputGroup className="mb-3 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-solid fa-lock text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            className="border-0 bg-transparent"
-                            value={signupPassword}
-                            onChange={(e) =>
-                              setSignupPassword(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
-
-                        {/* Confirm Password */}
-                        <InputGroup className="mb-3 rounded-pill bg-light input-pill">
-                          <InputGroup.Text className="bg-transparent border-0">
-                            <i className="fa-solid fa-lock text-muted" />
-                          </InputGroup.Text>
-                          <Form.Control
-                            type="password"
-                            placeholder="Confirm Password"
-                            className="border-0 bg-transparent"
-                            value={signupConfirmPassword}
-                            onChange={(e) =>
-                              setSignupConfirmPassword(e.target.value)
-                            }
-                            required
-                          />
-                        </InputGroup>
-
-                        {signupError && (
-                          <div className="text-center mb-2">
-                            <span className="text-danger">{signupError}</span>
-                          </div>
-                        )}
-
-                        <Button
-                          type="submit"
-                          variant="info"
-                          className="w-100 rounded-pill py-2 mb-3 signup-btn"
-                          disabled={signupLoading}
-                        >
-                          {signupLoading
-                            ? "Creating admin account..."
-                            : "SIGN UP"}
-                        </Button>
-
-                        <div className="d-flex align-items-center justify-content-center gap-2 signup-social-row">
-                          <span className="text-muted">or</span>
-                          <Button
-                            variant="outline-dark"
-                            className="rounded-pill d-flex align-items-center justify-content-center social-btn"
-                            type="button"
-                          >
-                            <span>Sign up with Facebook</span>
-                            <span className="ms-2">
-                              <i className="fa-brands fa-facebook-f fb-icon" />
-                            </span>
-                          </Button>
-                        </div>
-                      </Form>
-                    </Tab>
-                  </Tabs>
+                      <Button
+                        variant="outline-dark"
+                        className="flex-grow-1 rounded-pill d-flex align-items-center justify-content-center social-btn"
+                        type="button"
+                      >
+                        <i className="fa-brands fa-facebook-f me-2 fb-icon" />
+                        Log in with Facebook
+                      </Button>
+                    </div>
+                  </Form>
+                  
                 </Card.Body>
               </Card>
             </Col>
@@ -310,7 +168,6 @@ const handleSignup = async (e) => {
         </Container>
       </div>
 
-      {/* Admin-only footer with no Privacy/Work links */}
       <AdminFooter />
     </>
   );

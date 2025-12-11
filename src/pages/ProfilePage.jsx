@@ -67,17 +67,37 @@ const ProfilePage = () => {
     dataToSend.append('skills_services', formData.skills);
     dataToSend.append('resume', formData.verificationFile); // Send the file
 
-    try {
-      const response = await axios.post('/api/auth/complete-profile', dataToSend, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
+    // Log the data being sent
+    console.log("Data being sent to the backend:", dataToSend);
 
-      // After successful profile completion, redirect to PendingPage
-      navigate('/pending-approval');
-    } catch (error) {
-      console.error("Error during profile submission:", error);
+    // Log the form data to ensure it's being populated correctly
+    console.log('Form Data Before Sending:', formData);
+
+    // Validate that all fields are filled out
+    if (!formData.fullName || !formData.email || !formData.dateOfBirth || !formData.location || !formData.contactNumber || !formData.skills || !formData.verificationFile) {
+      alert('All fields, including file upload, are required.');
+      return;
     }
-  };
+
+    try {
+        const response = await axios.post('/api/auth/complete-profile', dataToSend, {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+    },
+});
+        // Log the successful response
+        console.log("Backend response:", response.data);
+
+        // After successful profile completion, redirect to PendingPage
+        navigate('/pending-approval');
+    } catch (error) {
+        // Log the error details if the request fails
+        console.error("Error during profile submission:", error.response ? error.response.data : error);
+        
+        // Optionally, display an error message to the user in the UI (optional)
+        alert("There was an error with your submission. Please try again.");
+    }
+};
 
   return (
     <div className="prfle-page">

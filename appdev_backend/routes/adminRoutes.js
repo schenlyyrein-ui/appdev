@@ -7,7 +7,9 @@ import {
   deactivateUser,
   reactivateUser,
   approveFreelancer,
-  verifyFreelancer
+  verifyFreelancer,
+  createAdmin,
+  getVerificationRequests
 } from "../controllers/adminController.js";
 
 const router = Router();
@@ -31,5 +33,11 @@ router.put("/freelancer/:id/verify", verifyFreelancer);
 
 // PUT /api/admin/freelancer/:id/approve
 router.put("/freelancer/:id/approve", approveFreelancer);
+
+// CREATE new user (Bypass verification)
+router.post("/users", createAdmin);
+
+// GET all verification requests
+router.get("/verifications", getVerificationRequests);
 
 export default router;
